@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "description": "A tutorial how to create an oracle and escrow using ISC.",
   "author": "Jeroen van den Hout <jlvandenhout@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.19.0"
+  }
 }

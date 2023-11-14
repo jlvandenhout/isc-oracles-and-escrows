@@ -31,3 +31,28 @@ You will require:
 Smart contracts are triggered by requests, which means in our case we can't let our escrow smart contract listen for events like parcel status updates. We rather act on requests, like the seller wanting to withdraw tokens, and then query for the status of the parcel to see if the request is valid or if it needs to be reverted.
 
 Additionally, smart contract execution has to be deterministic to be able to reach [concensus](https://wiki.iota.org/learn/smart-contracts/consensus/) about the outcome. This means we can't query something like a web service for parcel status updates from our escrow smart contract, because the outcome might be different for each node in the chain committee depending on the exact moment they query for it. To solve this issue, we need what is called an oracle smart contract, or simply an oracle. An oracle is a smart contract with the purpose of posting off-chain data on the chain, so it can be used as input for other smart contracts. The parcel service will use such an oracle to post status updates on the chain, which our escrow smart contract can then query, resulting in a deterministic order of updates and queries and thus a deterministic outcome.
+
+## Set up the environment
+
+We will use the Hardhat tool and libraries to develop, test, and deploy our contracts. So first install Hardhat and the Hardhat toolbox:
+
+```
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+```
+
+Initialize Hardhat with an empty configuration file:
+
+```
+npx hardhat init
+```
+
+Add the toolbox plugin to the Hardhat configuration:
+
+```diff
++ require("@nomicfoundation/hardhat-toolbox");
++
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+  solidity: "0.8.19",
+};
+```
