@@ -4,19 +4,27 @@ Let's say you want to buy something which has to be sent to you by the seller th
 
 Trying to resolve this situation, you come up with a third option: you give your money to the parcel service and the parcel service gives the money to the seller once they delivered the parcel to you, making the parcel service act as an [escrow](https://en.wikipedia.org/wiki/Escrow). While this removes the need for you and the seller to trust each other, it adds a new problem: now both of you have to trust the parcel service. You are looking for a solution that removes this trust requirement.
 
-In this tutorial we will explore one of those solutions by utilizing [IOTA smart contracts](https://wiki.iota.org/learn/smart-contracts/introduction/) to create a trustless escrow that allows deposit and withdrawal of tokens, depending on the status of the parcel. You will learn:
+In this tutorial we will explore one of those solutions by utilizing [IOTA smart contracts](https://wiki.iota.org/learn/smart-contracts/introduction/) to create a trustless escrow that allows deposit and withdrawal of tokens, depending on the status of the parcel.
 
-- How to develop, test, and deploy smart contracts using [Hardhat](https://hardhat.org/) and the [EVM testnet](https://wiki.iota.org/build/networks-endpoints/#testnet-evm).
-- How to send tokens between addresses on L1 (in this case the [testnet](https://wiki.iota.org/build/networks-endpoints/#public-testnet)) and smart contracts on L2 (in this case the [EVM testnet](https://wiki.iota.org/build/networks-endpoints/#testnet-evm)) using the [Firefly Shimmer wallet](https://firefly.iota.org/) and the [magic contract](https://wiki.iota.org/wasp-evm/getting-started/compatibility/#the-magic-contract).
+You will learn:
+
+- How to develop, test, and deploy smart contracts using [Hardhat](https://hardhat.org/) on the [ShimmerEVM testnet](https://wiki.iota.org/build/networks-endpoints/#testnet-evm).
+- How to send tokens between addresses on the [testnet](https://wiki.iota.org/build/networks-endpoints/#public-testnet) and smart contracts on the ShimmerEVM testnet using the [Firefly Shimmer wallet](https://firefly.iota.org/) and the [magic contract](https://wiki.iota.org/wasp-evm/getting-started/compatibility/#the-magic-contract).
 - What oracle smart contracts are and why they are needed.
 - How smart contracts can interact with each other.
 
-## Requirements
+You should already be able to:
 
-- A basic understanding of [IOTA smart contracts](https://wiki.iota.org/learn/smart-contracts/introduction/).
-- Knowledge of what [Solidity](https://soliditylang.org/) is.
-- Knowledge of how to use [npm](https://docs.npmjs.com/about-npm).
-- An editor ([Visual Studio Code](https://code.visualstudio.com/) with the [Hardhat](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) extension is recommended).
+- Understand the basics of [IOTA smart contracts](https://wiki.iota.org/learn/smart-contracts/introduction/).
+- Write code in [Solidity](https://soliditylang.org/).
+- Write code in [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Use [npm](https://docs.npmjs.com/about-npm).
+
+You will require:
+
+- [Node.js](https://nodejs.org/en/) version `16.0` or greater.
+- A code editor ([Visual Studio Code](https://code.visualstudio.com/) with the [Hardhat](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) extension is recommended).
+- A Firefly Shimmer account connected to the testnet containing a wallet with tokens for the parcel service, the buyer, and the seller. You can request tokens from the [faucet](https://faucet.testnet.shimmer.network/).
 
 ## Design Considerations
 
