@@ -1,0 +1,7 @@
+{
+  "name": "isc-oracles-and-escrows",
+  "version": "1.0.0",
+  "description": "A tutorial how to create an oracle and escrow using ISC.",
+  "author": "Jeroen van den Hout <jlvandenhout@gmail.com>",
+  "license": "MIT"
+}
