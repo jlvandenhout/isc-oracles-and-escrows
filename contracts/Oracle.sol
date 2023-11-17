@@ -5,28 +5,24 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Oracle is Ownable {
   enum Status {
+    Pending,
     Accepted,
     Delivered
   }
 
-  Status[] parcels;
+  mapping(bytes32 => Status) parcels;
 
   constructor() Ownable(msg.sender) {}
 
-  function add() public onlyOwner returns (uint) {
-    parcels.push(Status.Accepted);
-    return parcels.length - 1;
+  function request(bytes32 nonce) public view returns (bytes32) {
+    return keccak256(abi.encode(msg.sender, nonce));
   }
 
-  function set(uint parcel, Status status) public onlyOwner {
+  function set(bytes32 parcel, Status status) public onlyOwner {
     parcels[parcel] = status;
   }
 
-  function has(uint parcel) public view returns (bool) {
-    return parcel < parcels.length;
-  }
-
-  function get(uint parcel) public view returns (Status) {
-    return parcels[parcel];
+  function get(bytes32 parcel) public view returns (uint) {
+    return uint(parcels[parcel]);
   }
 }
