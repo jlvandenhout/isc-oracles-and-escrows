@@ -30,7 +30,7 @@ You will require:
 
 Smart contract execution has to be deterministic to be able to reach [concensus](https://wiki.iota.org/learn/smart-contracts/consensus/) about the outcome. This means we can't query something like a web service for parcel status updates from our escrow smart contract, because the outcome might be different for each node in the chain committee depending on the exact moment they query for it. To solve this issue, we need what is called an oracle smart contract, or simply an oracle. An oracle is a smart contract with the purpose of getting off-chain data on the chain, so it can be used as input for other smart contracts. The parcel service will use such an oracle to post status updates on the chain, which our escrow smart contract can then query, resulting in a deterministic order of updates and queries and thus a deterministic outcome.
 
-Another thing to keep in mind is smart contracts are triggered by requests, which means in our case we can't let our escrow smart contract listen for events like parcel status updates. Generally you would solve this using a callback pattern, but in this tutorial we will simply request the parcel status from the parcel status oracle whenever we need it.
+Another thing to keep in mind is smart contracts are triggered by requests, which means in our case we can't let our escrow smart contract listen for events like parcel status updates. Generally you would solve this using a callback pattern, but in this tutorial we will simply request the parcel status from the oracle whenever we need it.
 
 ## Set up the environment
 
@@ -68,11 +68,13 @@ module.exports = {
 +  networks: {
 +    testnet: {
 +      url: "https://json-rpc.evm.testnet.shimmer.network",
-+      from: "<your_account_address>",
++      from: "<your_evm_account_address>",
 +      accounts: {
-+        mnemonic: "<your_wallet_mnemonic>",
++        mnemonic: "<your_account_recovery_phrase>",
 +      },
 +    },
 +  },
 };
 ```
+
+## The Oracle smart contract
